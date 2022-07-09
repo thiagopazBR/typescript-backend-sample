@@ -11,7 +11,7 @@
   "rules": {
     "curly": ["error", "multi"],
     "no-console": "off",
-    "no-loops/no-loops": "error",
+    // "no-loops/no-loops": "error",
     "prettier/prettier": [
       "error",
       { "endOfLine": "auto" },
