@@ -1,50 +1,24 @@
-##########################################################################
-# First Stage buider                                                     #
-# for dev, please run: docker build --target=builder -t backend-dev:v1 . # 
-##########################################################################
-FROM node:lts as builder
+FROM node:16-alpine as base
 
-# Create app directory
 WORKDIR /usr/src/app
+COPY package.json package-lock.json /usr/src/app/
+COPY . /usr/src/app
 
-# Install app dependencies
-COPY package*.json ./
-
-ENV NODE_ENV=development
-RUN npm i --location=global npm@latest \
-  && npm config set unsafe-perm true \
-  && npm install
-
-COPY . .
-
-RUN npm run build
-
-#############################################################
-# Second Stage buider                                       #
-#############################################################
-FROM node:lts-slim
-
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN apt-get update -y
-RUN apt-get install -y tzdata
-
-ENV TZ=America/Sao_Paulo
-
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
-RUN echo $TZ > /etc/timezone
-
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-COPY package*.json ./
+FROM base as production
+# docker build . -t backend-prod:v1 --target=production
+# docker run --name backend-prod -d -t backend-prod:v1
 
 ENV NODE_ENV=production
-RUN npm i --location=global npm@latest
-RUN npm install --omit=dev
+RUN npm install --production
 
-COPY --from=builder /usr/src/app/build ./build
-COPY .env.sample .env
+CMD ["npm", "start"]
 
-CMD [ "node", "build/index.js" ]
+
+FROM base as dev
+# docker build . -t backend-dev:v1 --target=dev
+# docker run --name backend-dev -d -t backend-dev:v1
+
+ENV NODE_ENV=development
+RUN npm config set unsafe-perm true
+RUN npm install
+CMD ["npm", "run", "dev"]
