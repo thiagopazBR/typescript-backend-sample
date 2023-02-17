@@ -14,6 +14,7 @@ ENV NODE_ENV=development
 RUN npm i --location=global npm@latest \
   && npm install
 
+RUN apk update && apk add --no-cache git
 
 COPY . .
 
