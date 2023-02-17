@@ -1,0 +1,13 @@
+2023-02-17 01:43:13 UTC [ERROR]: 	xxxx.csv file does not exists
+2023-02-17 01:46:13 UTC [INFO]: 	xxxx.csv file exists
+2023-02-17 01:46:13 UTC [WARN]: 	xxxx.csv missing column
+2023-02-17 01:46:13 UTC [ERROR]: 	xxxx.csv file does not exists
+2023-02-17 02:05:54 UTC [INFO]: 	xxxx.csv file exists
+2023-02-17 02:05:54 UTC [WARN]: 	xxxx.csv missing column
+2023-02-17 02:05:54 UTC [ERROR]: 	xxxx.csv file does not exists
+2023-02-17 02:08:33 UTC [INFO]: 	xxxx.csv file exists
+2023-02-17 02:08:33 UTC [WARN]: 	xxxx.csv missing column
+2023-02-17 02:08:33 UTC [ERROR]: 	xxxx.csv file does not exists
+2023-02-17 02:08:58 UTC [INFO]: 	xxxx.csv file exists
+2023-02-17 02:08:58 UTC [WARN]: 	xxxx.csv missing column
+2023-02-17 02:08:58 UTC [ERROR]: 	xxxx.csv file does not exists

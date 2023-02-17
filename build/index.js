@@ -23,8 +23,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("dotenv/config");
 const path = __importStar(require("path"));
-console.log(path.basename(__dirname));
-let a = 'teste';
+const args_validation_1 = require("./functions/args_validation");
+const logger_1 = require("./functions/logger");
+const a = 'teste 3w4w';
 console.log(a);
+console.log(process.env.USERNAME);
+console.log(process.env.PASSWORD);
+console.log(path.basename(__dirname));
+logger_1.logger.info(`xxxx.csv file exists`);
+logger_1.logger.warn(`xxxx.csv missing column`);
+logger_1.logger.error(`xxxx.csv file does not exists`);
+const args = (0, args_validation_1.args_validation)(process.argv.slice(2));
+console.log(args.start_date);
 //# sourceMappingURL=index.js.map
